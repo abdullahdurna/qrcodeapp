@@ -13,8 +13,7 @@ import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.coroutines.cancellation.CancellationException
-import kotlin.math.log
+
 
 private const val CAMERA_REQUEST_CODE = 101
 
@@ -92,16 +91,17 @@ class MainActivity : AppCompatActivity() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             CAMERA_REQUEST_CODE -> {
                 if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(this, "You need to permission to be use this app!", Toast.LENGTH_SHORT).show()
-                }else{
+                }
             }
         }
     }
 }
-}
+
 
 
 
